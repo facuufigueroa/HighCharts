@@ -1,0 +1,55 @@
+/* Estilos para el body*/
+body{
+    background-color: #00001f;
+}
+
+.navbar-expand-lg{
+    background-color: #9c9a9a;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    margin:0.5rem;
+    border-radius: 5px;
+}
+.nav-item{
+    font-family: 'Roboto', sans-serif;
+    color:white;
+}
+
+.titlePage{
+    font-family: 'Roboto', sans-serif;
+    color: #dedede;
+}
+
+
+/* Contenidos del Footer de la Página */
+.navbar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 5px 0; /* Espacio en la parte superior e inferior del navbar */
+    height: 3rem;
+    background-color: #9c9a9a;
+    border-radius: 5px;
+
+}
+
+.navbar-footer ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.3rem;
+}
+
+.navbar-footer ul li {
+    display: inline;
+    margin-right: 20px;
+
+}
+
+.navbar-footer a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    color: #dedede;
+}
