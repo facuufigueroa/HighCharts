@@ -80,3 +80,30 @@ body{
 .card-title {
     margin-bottom: 10px; /* Añade un pequeño margen inferior al título para separarlo del párrafo */
 }
+
+.image-wrapper {
+    margin-bottom: 2em;
+}
+
+.image{
+    width: 23em;
+    height: auto;
+    animation: movimiento 3s linear infinite;
+}
+
+.image-icon{
+    width: 1em;
+    height: auto;
+}
+
+@keyframes movimiento {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
