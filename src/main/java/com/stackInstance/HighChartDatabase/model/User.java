@@ -4,8 +4,10 @@ package com.stackInstance.HighChartDatabase.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -17,6 +19,7 @@ public class User {
     private String picture;
     private Date date;
     private int number_friends;
+
 
     public User() {
     }

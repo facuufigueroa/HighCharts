@@ -18,6 +18,7 @@ body{
 .titlePage{
     font-family: 'Roboto', sans-serif;
     color: #dedede;
+    margin-top: 3rem;
 }
 
 
@@ -52,4 +53,30 @@ body{
     color: white;
     font-family: 'Roboto', sans-serif;
     color: #dedede;
+}
+
+
+.card-style {
+    height: 100%; /* Asegura que las cards tengan la misma altura */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex: 1; /* Hace que el cuerpo de la card ocupe todo el espacio disponible */
+}
+
+.principal{
+    margin-top: 10rem;
+}
+
+.card-body {
+    height: 200px; /* Establece una altura fija para las card-body */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    margin-bottom: 10px; /* Añade un pequeño margen inferior al título para separarlo del párrafo */
 }

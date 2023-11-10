@@ -20,4 +20,5 @@ public class IPostServiceImp{
         return postRepository.findAll();
     }
 
+
 }

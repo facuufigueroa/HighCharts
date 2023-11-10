@@ -20,32 +20,59 @@
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="#">Grafico de Linea</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Grafico de Tarta</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Grafico de Barras</a>
-				</li>
-			</ul>
-		</div>
+
 	</div>
 </nav>
 
 
 <div class="container">
-	<h1 class ="titlePage">Datos Metricos Definidos</h1>
+	<h1 class ="titlePage">DashBorad's de Metricas</h1>
 	<p class ="titlePage">Proyecto Final Asingatura Metricas de Software</p>
 
 </div>
-<div align="center">
-	<a th:href="@{/barChart}">Bar-Graph</a><br /> <br />
-	<a th:href="@{/displayPieChart}">Pie-Chart</a>
+
+<div class="container">
+	<div class="row principal justify-content-center">
+		<div class="col-sm-10">
+			<div class="row">
+				<div class="col-md-4 mb-3">
+					<div class="card h-100 card-style">
+						<div class="card-body">
+							<h5 class="card-title">Gráfico de Barras</h5>
+							<p class="card-text">Forma de representar gráficamente un conjunto de datos o valores mediante barras rectangulares de longitud proporcional a los valores representados</p>
+							<a href="/barChart" class="btn btn-primary">Mostrar</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-3">
+					<div class="card h-100 card-style custom-bg-color">
+						<div class="card-body">
+							<h5 class="card-title">Gráficos de Tarta</h5>
+							<p class="card-text">Recurso estadístico que se utiliza para representar porcentajes y proporciones</p>
+							<a href="/pieChart" class="btn btn-primary">Mostrar</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-3">
+					<div class="card h-100 card-style custom-bg-color">
+						<div class="card-body">
+							<h5 class="card-title">Gráficos de Línea</h5>
+							<p class="card-text">Recurso estadístico que se utiliza para representar tendencias a lo largo del tiempo</p>
+							<a href="/lineChart" class="btn btn-primary">Mostrar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+<!--div align="center">
+	<a th:href="@{/barChart}">Bar-Graph</a><br /> <br />
+	<a th:href="@{/pieChart}">Pie-Chart</a>
+</div-->
 
 <nav class="navbar-footer">
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+  <title>Line Graph</title>
+  <!-- Optional theme -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+</head>
+<body>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<div id="container" style="height: 400px"></div>
+<script th:inline="javascript">
+  var fechas = ['2023-01-01', '2023-02-01', '2023-03-01', '2023-04-01', '2023-05-01', '2023-06-01', '2023-07-01', '2023-08-01'];
+  var likes = [15, 25, 10, 30, 20, 35, 40, 22]; // Cantidad de likes de ejemplo para las fechas
+  var dislikes = [8, 12, 5, 15, 10, 20, 25, 14];
+  Highcharts.chart('container',{
+    chart: {
+      type: 'line',
+      width: 500
+    },
+    title: {
+      text: 'Variación de interacciones de likes y dislikes de Publicaciones'
+    },
+    xAxis: {
+      categories: fechas
+    },
+    tooltip: {
+      formatter: function() {
+        return 'Fecha: ' + this.x + '<br/> Likes: ' + this.y;
+      }
+    },
+    series: [{
+      name: 'Likes',
+      data: likes
+    }, {
+      name: 'Dislikes',
+      data: dislikes
+    }]
+  });
+
+
+</script>
+</div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

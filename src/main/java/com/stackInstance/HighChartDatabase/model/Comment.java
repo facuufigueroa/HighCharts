@@ -15,16 +15,30 @@ public class Comment {
     private int number_likes;
     private int number_dislikes;
 
+    @ManyToOne
+    @JoinColumn(name="id_usuario")
+    private User user;
 
+    @ManyToOne
+    @JoinColumn(name="id_publicacion")
+    private Post post;
     public Comment() {
     }
 
-    public Comment(Long id, String content, Date date, int number_likes, int number_dislikes) {
+    public Comment(Date date, int number_likes, int number_dislikes) {
+        this.date = date;
+        this.number_likes = number_likes;
+        this.number_dislikes = number_dislikes;
+    }
+
+    public Comment(Long id, String content, Date date, int number_likes, int number_dislikes, Post post, User user) {
         this.id = id;
         this.content = content;
         this.date = date;
         this.number_likes = number_likes;
         this.number_dislikes = number_dislikes;
+        this.post=post;
+        this.user=user;
 
     }
 
@@ -68,6 +82,19 @@ public class Comment {
         this.number_dislikes = number_dislikes;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
 }

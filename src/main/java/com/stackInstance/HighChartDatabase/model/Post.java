@@ -15,14 +15,15 @@ public class Post {
     private int number_dislikes;
     private int number_comments;
     private int number_shares;
-    /*@ManyToOne
+
+    @ManyToOne
     @JoinColumn(name="id_usuario")
-    private User user;*/
+    private User user;
 
     public Post() {
     }
 
-    public Post(Long id, String content, Date date, int number_likes, int number_dislikes, int number_comments, int number_shares) {
+    public Post(Long id, String content, Date date, int number_likes, int number_dislikes, int number_comments, int number_shares,User user) {
         this.id = id;
         this.content = content;
         this.date = date;
@@ -30,7 +31,7 @@ public class Post {
         this.number_dislikes = number_dislikes;
         this.number_comments = number_comments;
         this.number_shares = number_shares;
-
+        this.user = user;
     }
 
     public Long getId() {
@@ -89,5 +90,11 @@ public class Post {
         this.number_shares = number_shares;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
