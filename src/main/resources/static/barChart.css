@@ -4,6 +4,7 @@
 }
 
 .accordion {
+    margin-top: 2rem;
     text-align: center;
     margin: 0 auto;
     max-width: 400px; /* Adjust the width as needed */
@@ -15,3 +16,9 @@
     color: blue;
 }
 
+.contaner{
+    background-color: #00001f;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}

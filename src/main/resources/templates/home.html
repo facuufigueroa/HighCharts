@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 	<title>Proyecto Final</title>
-
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"></link>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -16,7 +17,7 @@
 
 <nav class="navbar navbar-expand-lg ">
 	<div class="container">
-		<a class="navbar-brand" href="#">Dashboard Analítico de Perfil de Facebook</a>
+		<a class="navbar-brand mx-auto" href="#">Dashboard Analítico de Perfil de Facebook</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -24,52 +25,175 @@
 	</div>
 </nav>
 
-<div class="container">
+<div class="container-subtitle">
 	<div class="d-flex align-items-center">
 		<h1 class="titlePage mr-auto">Dashboard's de Métricas</h1>
 
-
 	</div>
-	<p class="titlePage">Proyecto Final Asignatura Métricas de Software</p>
+
 </div>
 
 
-<div class="container">
-	<div class="row principal justify-content-center">
-		<div class="col-sm-10">
-			<div class="row">
-				<div class="col-md-4 mb-3">
-					<div class="card h-100 card-style">
-						<div class="card-body">
-							<h5 class="card-title">Gráfico de Barras</h5>
-							<p class="card-text">Forma de representar gráficamente un conjunto de datos o valores mediante barras rectangulares de longitud proporcional a los valores representados</p>
-							<a href="/barChart" class="btn btn-primary">Mostrar</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 mb-3">
-					<div class="card h-100 card-style custom-bg-color">
-						<div class="card-body">
-							<h5 class="card-title">Gráficos de Tarta</h5>
-							<p class="card-text">Recurso estadístico que se utiliza para representar porcentajes y proporciones</p>
-							<a href="/pieChart" class="btn btn-primary">Mostrar</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 mb-3">
-					<div class="card h-100 card-style custom-bg-color">
-						<div class="card-body">
-							<h5 class="card-title">Gráficos de Línea</h5>
-							<p class="card-text">Recurso estadístico que se utiliza para representar tendencias a lo largo del tiempo</p>
-							<a href="/lineChart" class="btn btn-primary">Mostrar</a>
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="box">
+	<div class="chart-container">
+		<div class="chart" id="container1"></div>
+		<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script th:inline="javascript">
+			$(function(){
+				Highcharts.chart('container1', {
+					chart: {
+						type: 'column',
+					},
+					title: {
+						text: 'Número de amigos por usuario',
+					},
+					xAxis: {
+						categories: [[${name}]],
+						crosshair: true,
+					},
+					yAxis: {
+						min: 0,
+						max:100,
+						title: {
+							text: 'Número de amigos',
+							style: {
+								color: 'white' // Cambia el color del título a blanco
+							}
+						}
+					},
+					tooltip: {
+						headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+						pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+								'<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+						footerFormat: '</table>',
+						shared: true,
+						useHTML: true
+					},
+					plotOptions: {
+						column: {
+							pointPadding: 0.2,
+							borderWidth: 0,
+						},
+						series: {
+							dataLabels: {
+								style: {
+									color: 'white' // Cambiar el color del nombre de la serie a blanco
+								}
+							}
+						}
+					},
+					series: [{
+						name: 'Cant. Amigos',
+						data: [[${number_friends}]],
+					}]
+				});
+			});
+		</script>
+		<!-- Block level -->
+		<div class="description">
+			<h4>Promedio de amigos por usuario:</h4>
+			<p>
+				Calcula el promedio del número de amigos de todos los usuarios.<br>
+			</p>
+			<h4>Usuario con mayor o menor número de amigos:</h4>
+			<p>
+				Identifica al usuario que tiene el mayor número de amigos.
+			</p>
 		</div>
 	</div>
-</div>
 
+	<div class="chart-container">
+		<div class="chart" id="container2"></div>
+		<script th:inline="javascript">
+			Highcharts.chart('container2', {
+				chart : {
+					type : 'pie',
+					options3d : {
+						enabled : true,
+						alpha : 50,
+						beta : 0
+					}
+				},
+				title : {
+					text : 'Likes y dislikes de comentarios totales'
+				},
+				tooltip : {
+					pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions : {
+					pie : {
+						allowPointSelect : true,
+						cursor : 'pointer',
+						depth : 35,
+						dataLabels : {
+							enabled : true,
+							format : '{point.name}'
+						}
+					}
+				},
+				series : [ {
+					type : 'pie',
+					name : 'Ratio',
+					data : [ [ 'Número total de Likes', [[${number_likes}]] ], [ 'Número total de dislikes', [[${number_dislikes}]] ]  ]
+				} ]
+			});
+		</script>
+		<div class="description">
+			<h4>Porcentaje de Reacciones Positivas y Negativas</h4>
+			<p>
+				Calcula el porcentaje de reacciones positivas (likes) y negativas (dislikes).<br>
+			</p>
+		</div>
+	</div>
+
+	<div class="chart-container">
+		<div class="chart" id="container3"></div>
+		<script th:inline="javascript">
+			var fechas = ['2023-01-01', '2023-02-01', '2023-03-01', '2023-04-01', '2023-05-01', '2023-06-01', '2023-07-01', '2023-08-01'];
+			var likes = [15, 25, 10, 30, 20, 35, 40, 22]; // Cantidad de likes de ejemplo para las fechas
+			var dislikes = [8, 12, 5, 15, 10, 20, 25, 14];
+			Highcharts.chart('container3',{
+				chart: {
+					type: 'line',
+					width: 500
+				},
+				title: {
+					text: 'Variación de interacciones de likes y dislikes de publicaciones'
+				},
+				xAxis: {
+					categories: fechas
+				},
+				tooltip: {
+					formatter: function() {
+						return 'Fecha: ' + this.x + '<br/> Likes: ' + this.y;
+					},
+					backgroundColor: '#FCFFC5'
+				},
+				series: [{
+					name: 'Likes',
+					data: likes
+				}, {
+					name: 'Dislikes',
+					data: dislikes
+				}]
+			});
+
+		</script>
+		<div class="description3">
+			<h4>Evolución de interacciones en publicaciones a lo largo del tiempo</h4>
+			<p>
+				Comparación los "likes" y "dislikes" de publicaciones en un intervalo de fechas.<br>
+			</p>
+		</div>
+	</div>
+
+</div>
 
 
 <!--div align="center">
